@@ -1,0 +1,62 @@
+import java.util.*;
+
+public class Source {
+   public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       int n = sc.nextInt();
+       int arr[] = new int[n];
+       for (int i = 0; i < n; i++) {
+           arr[i] = sc.nextInt();
+       }
+       partitionNegativeAndPositive(n, arr);
+   }
+
+   // Method to partition negative and positive numbers without comparing with 0
+   static void partitionNegativeAndPositive(int n, int arr[]) {
+      // Write your code here
+      ArrayList<Integer> l1=new ArrayList<>();
+      ArrayList<Integer> l2=new ArrayList<>();
+      for(int i=0;i<n;i++)
+      {
+          if(arr[i]>=0)
+            l1.add(arr[i]);
+          else
+            l2.add(arr[i]);
+      }
+  if(arr[0]>=0){
+    if(l1.size()>0)
+    {
+      for(Integer x:l1)
+        System.out.print(x+" "); System.out.println();
+    }
+    else
+        System.out.println("Array doesn't have positive numbers");
+    if(l2.size()>0)
+    {
+      for(Integer y:l2)
+        System.out.print(y+" "); System.out.println();
+    }
+    else
+        System.out.println("Array doesn't have negative numbers");
+  }
+  else{
+      if(l2.size()>0)
+    {
+      for(Integer y:l2)
+        System.out.print(y+" "); System.out.println();
+    }
+    else
+        System.out.println("Array doesn't have negative numbers");
+    if(l1.size()>0)
+    {
+      for(Integer x:l1)
+        System.out.print(x+" "); System.out.println();
+    }
+    else
+        System.out.println("Array doesn't have positive numbers");
+  }
+      
+      
+      
+   }
+}

@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+class Source {
+
+   public static void main(String[] args) {
+       Scanner s = new Scanner(System.in);
+       int n = s.nextInt();
+       int[] arrayCopy = new int[n], array = new int[n];
+       for (int i = 0; i < n; i++) {
+           array[i] = s.nextInt();
+       }
+      for(int i=0;i<n;i++)
+         arrayCopy[i]=array[i];
+      if(n<=2)
+      {
+          System.out.println("Yes"); return;
+      }
+      else
+      {
+          for(int i=0;i<(n+1)/2;i++)
+          {
+              if(arrayCopy[i]>arrayCopy[n-i-1])
+              {
+                  int t=arrayCopy[i];
+                  arrayCopy[i]=arrayCopy[n-i-1];
+                  arrayCopy[n-i-1]=t;
+              }
+              if(i>0)
+              {
+                  if((arrayCopy[i]<arrayCopy[i-1]) || (arrayCopy[n-i-1]>arrayCopy[n-i]))
+                  {
+                      System.out.println("No"); return;
+                  }
+              }
+          }
+      }
+      System.out.println("Yes");
+       // Write your code here
+      
+   }
+}
+

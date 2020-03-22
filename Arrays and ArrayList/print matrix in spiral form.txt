@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class Source {
+   public static void main(String args[]) {
+       Scanner s = new Scanner(System.in);
+       int n = s.nextInt();
+       int m = s.nextInt();
+       int[][] arr = new int[n][m];
+       for (int i = 0; i < n; i++)
+           for (int j = 0; j < m; j++)
+               arr[i][j] = s.nextInt();
+       spiral(arr, n, m);
+   }
+
+   // Method to print the matrix in the antispiral form
+   static void spiral(int[][] arr, int n, int m) {
+       // Write your code here
+       int k=0,l=0;
+       int i;
+       while(k<n && l<m)
+       {
+           for(i=l;i<m;i++)
+               System.out.print(arr[k][i]+" ");
+           k++;
+           for(i=k;i<n;i++)
+              System.out.print(arr[i][m-1]+" ");
+           m--;
+           if(k<n)
+           {
+               for(i=m-1;i>=l;i--)
+                  System.out.print(arr[n-1][i]+" ");
+               n--;
+           }
+           if(l<m)
+           {
+               for(i=n-1;i>=k;i--)
+                  System.out.print(arr[i][l]+" ");
+               l++;
+           }
+       }
+   }
+}

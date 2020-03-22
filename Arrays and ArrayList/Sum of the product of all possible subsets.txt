@@ -1,0 +1,28 @@
+
+import java.util.*;
+
+public class Source {
+   public static void main(String args[]) {
+       Scanner s = new Scanner(System.in);
+       int n = s.nextInt();
+       int arr[] = new int[n];
+       for (int i = 0; i < n; i++)
+           arr[i] = s.nextInt();
+       sumOfProductOfSubsets(arr, n);
+   }
+
+   // Method to find sum of the product of elements of all possible subArrays
+   static void sumOfProductOfSubsets(int arr[], int n) {
+       // Wite your code here
+       int ans=1;
+       for(int i=0;i<n;i++)
+       {
+           if(arr[i]<0)
+           {
+             System.out.print("Invalid Input"); return;
+           }
+           ans=ans*(arr[i]+1);
+       }
+       System.out.println(ans-1);
+   }
+}
