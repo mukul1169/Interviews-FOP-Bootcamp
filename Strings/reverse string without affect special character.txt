@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Source {
+   public static void main(String args[]) {
+       Scanner s = new Scanner(System.in);
+       String str = s.nextLine();
+       reverseTheString(str);
+   }
+
+   // Method to reverse the string without affecting the special characters
+   static void reverseTheString(String str) {
+       // Write your code here
+       char a[]=str.toCharArray();
+       int l=0;
+       int r=a.length-1;
+       while(l<r)
+       {
+           if(!Character.isAlphabetic(a[l]))
+             l++;a
+           else if(!Character.isAlphabetic(a[r]))
+             r--;
+           else
+           {
+               char c=a[l];
+               a[l]=a[r];
+               a[r]=c;
+           l++; r--;
+               
+           }
+       }
+       String s=new String(a);
+       System.out.println(s);
+       
+   }
+}

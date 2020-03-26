@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class Source {
+   public static void main(String args[]) {
+       Scanner s = new Scanner(System.in);
+       String str1 = s.nextLine();
+       String str2 = s.nextLine();
+       minimumNumberOfOperations(str1, str2);
+   }
+
+   // Method to find the minimum number of operations to be performed
+   // on the first string to transform it into the second string
+   static void minimumNumberOfOperations(String str1, String str2) {
+       // Check whether the given two strings are anagrams of each other or not
+       if (str1.length() != str2.length()) {
+           System.out.println("-1");
+           return;
+       }
+       int count[] = new int[256];
+       for (int i = 0; i < str1.length(); i++) {
+           count[str1.charAt(i)]++;
+           count[str2.charAt(i)]--;
+       }
+       for (int i = 0; i < 256; i++)
+           if (count[i] != 0) {
+               System.out.println("-1");
+               return;
+           }
+       // If the two strings are anagrams of each other implies the first string can be transformed into the second string   
+       int i, j, result = 0;
+       i = str1.length() - 1;
+       j = str2.length() - 1;
+       while (i >= 0) {
+           if (str1.charAt(i) != str2.charAt(j))
+               result++;
+           else
+               j--;
+           i--;
+       }
+       System.out.println(result);
+   }
+}

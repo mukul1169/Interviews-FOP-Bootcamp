@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class Source {
+   public static void main(String args[]) {
+       Scanner s = new Scanner(System.in);
+       String str = s.nextLine();
+       int k = s.nextInt();
+       numberOfsubStrings(str, k);
+   }
+
+   // Method to count the number of substrings with exactly k distinct characters
+   static void numberOfsubStrings(String str, int k) {
+       int count = 0, distinctCharacters = 0, x = 0;
+       // An array to keep track of the number of characters in the substring.
+       int[] arr = new int[26];
+       for (int i = 0; i < str.length(); i++) {
+           Arrays.fill(arr, 0);
+           distinctCharacters = 0;
+           for (int j = i; j < str.length(); j++) {
+               // The numeric value of a or A is 10 and the numeric value of z or Z is 35
+               x = Character.getNumericValue(str.charAt(j)) - 10;
+               // The numeric value of space or any special character is -1
+               if (x < 0 || x > 25) {
+                   System.out.println("Invalid Input");
+                   return;
+               }
+               // If the character at jth index is occurring for the first time
+               if (arr[x] == 0) {
+                   distinctCharacters++;
+                   arr[x]++;
+               }
+               if (distinctCharacters == k)
+                   count++;
+           }
+       }
+       System.out.println(count);
+   }
+}
