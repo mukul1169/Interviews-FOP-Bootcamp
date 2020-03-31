@@ -1,0 +1,44 @@
+
+import java.util.*;
+
+public class Source {
+
+//Initialize an integer stack and push 0 this is done because you need to compare the height of rainfall of current month with the previous month and height[0] contains the height of rainfall for the first month. So in the 'for' loop you can directly peek the data at index '0' and compare it with current index 'i'. Similarly, for all the other months, the stack will keep track of the index of months that exists before the current month.
+
+//The first element of the output array S will be 1 because the first month's data cannot be compared with the data of any other month but according to the question you need to output the month that has rainfall less than or equal to the current month and first month's rainfall will be equal to the it's own height. Same goes for other months as well.
+
+    static void difference(int height[], int S[]) {
+        Stack<Integer> st = new Stack<>();
+        st.push(0);
+        S[0] = 1;
+        for (int i = 1; i < 12; i++) {
+            while (!st.empty() && height[st.peek()] <= height[i]) {
+                st.pop();
+            }
+            if (st.empty()) {
+                S[i] = i + 1;
+            } else {
+                S[i] = i - st.peek();
+            }
+            st.push(i);
+        }
+        for (int i = 0; i < 12; i++) {
+            System.out.print(S[i] + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] height = new int[12];
+        for (int i = 0; i < 12; i++) {
+            height[i] = in.nextInt();
+        }
+
+        // Output array that will store the number of months having rainfall less than the current month 
+        int S[] = new int[12];
+        difference(height, S);
+    }
+}
+
+
+

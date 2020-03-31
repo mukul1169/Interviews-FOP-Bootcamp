@@ -1,0 +1,39 @@
+import java.util.*;
+class Source {
+    public static String findDuplicateParenthesis(String inputString) {
+
+        Stack<Character> stack = new Stack();
+        for (int i = 0; i < inputString.length(); i++) {
+            char ch = inputString.charAt(i);
+            if (ch != ')') {
+                stack.push(ch);
+            } else {
+                char top = stack.peek();
+                stack.pop();
+                int count = 0;
+                while (top != '(') {
+                    top = stack.peek();
+                    stack.pop();
+                    count++;
+                }
+                if (count < 1) {
+                    return "Input string contains duplicate parenthesis";
+                }
+            }
+        }
+        return "Input string does not contain duplicate parenthesis";
+
+    }
+
+
+        public static void main(String[] args){
+            Source obj = new Source();
+            String inputString = new String();
+            Scanner in = new Scanner(System.in);
+            inputString = in.nextLine();
+            System.out.println(obj.findDuplicateParenthesis(inputString));
+
+        }
+
+    }
+

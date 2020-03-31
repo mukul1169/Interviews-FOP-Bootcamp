@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class Source {
+  // This function returns the sorted stack
+   public static Stack < Integer > sortStack(Stack < Integer > input) {
+       //write your code here
+       ArrayList<Integer> al=new ArrayList<>();
+       while(!input.isEmpty())
+         al.add(input.pop());
+       Collections.sort(al);
+       for(int x:al)
+         input.push(x);
+     return input;
+   }
+
+   public static void findKthLargestNum(Stack <Integer> sortedStack, int k) {
+      //write your code herewhi
+      while(k>1)
+      {      
+          sortedStack.pop(); k--;
+      }
+      System.out.println(sortedStack.pop());
+      
+
+      
+   }
+
+
+  public static void main(String args[]) {
+        Stack < Integer > inputStack = new Stack < Integer > ();
+        Scanner in = new Scanner(System.in);
+        int n = in .nextInt();
+        for (int i = 0; i < n; i++) {
+            inputStack.add( in .nextInt());
+        }
+
+        if (inputStack.isEmpty()) {
+            System.out.println("stack is empty");
+            System.exit(0);
+        }
+
+        int k = in .nextInt();
+        if (k > inputStack.size()) {
+            System.out.println("invalid input");
+            System.exit(0);
+        }
+
+        // This is the temporary stack
+
+        Stack < Integer > temp = sortStack(inputStack);
+        findKthLargestNum(temp, k);
+
+    }
+}
